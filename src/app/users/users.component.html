@@ -1,0 +1,54 @@
+<section class="container">
+  <div class="row mt-4">
+    <div class="col-md-6 border p-4">
+      <h2 class="text-center font-weight-bold">Users Entry</h2>
+      <form [formGroup]="userData" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" class="form-control text-capitalize" formControlName="firstname" id="firstname"/>
+        </div>
+        <div class="form-group">
+          <label>Address:</label>
+          <textarea class="form-control text-capitalize" rows="2" formControlName="address" id="address"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Phone Number:</label>
+          <input type="text" class="form-control" formControlName="phone" id="phone"/>
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" class="form-control" formControlName="email" id="email"/>
+        </div>
+        <div class="col text-center">
+          <button type="button" class="btn btn-warning mr-4" (click)="clearFn()">CLEAR</button>
+          <button type="submit" class="btn btn-primary">{{btnText}}</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6 border p-2">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let users of usersList">
+            <td class="text-capitalize">{{users.name}}</td>
+            <td class="text-capitalize">{{users.address}}</td>
+            <td>{{users.phone}}</td>
+            <td>{{users.email}}</td>
+            <td>
+              <button class="btn btn-sm btn-success m-1" (click)="getUserInfo(users)">Edit</button>
+              <button class="btn btn-sm btn-danger m-1" (click)="deleteUser(users)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
